@@ -35,14 +35,98 @@ describe('Game', function() {
     });
   });
 
+  describe('board cleanUpInput', function() {
+    var testGame;
+    beforeAll(function() {
+      testGame = new Game();
+    });
+
+    it('turn a string position into array coordinates', function() {
+        expect(testGame.b1.cleanUpInput('1a')).toEqual([0,0]);
+                expect(testGame.b1.cleanUpInput('1b')).toEqual([0,1]);
+    });
+  });
+
+// skipped testing startTurn & getPosition because we didn't know how to have tests interact with the prompt
+
   describe('play', function() {
     var testGame;
     beforeAll(function() {
       testGame = new Game();
     });
 
-    it('get board should return a string of the board ', function() {
-        expect(testGame.b1.getBoard()).toEqual(jasmine.any(String));
+    it('checks if the turn advances if the desired position is available', function() {
+      expect(testGame.turn).toEqual(1);
+      testGame.play('1a');
+      expect(testGame.turn).toEqual(2);
+      testGame.play('1a'); //spot unavailable so turn should not advance:
+      expect(testGame.turn).toEqual(2);
+    });
+  });
+
+  describe('checkPlacement', function() {
+    var testGame;
+    beforeAll(function() {
+      testGame = new Game();
+    });
+
+    it('checks if the desired position is available', function() {
+      expect(testGame.checkPlacement('1a')).toEqual(true);
+      testGame.play('1a');
+      expect(testGame.checkPlacement('1a')).toEqual(false);
+    });
+  });
+
+  describe('fill', function() {
+    var testGame;
+    beforeAll(function() {
+      testGame = new Game();
+    });
+
+    it('checks if an empty position is detected as empty', function() {
+      expect(testGame.b1.boardArray[0][0]).toEqual(' ');
+    });
+
+    it('checks if the fill function fills a position properly', function() {
+      testGame.b1.fill('1a', 'X');
+      expect(testGame.b1.boardArray[0][0]).toEqual('X');
+    });
+  });
+
+  describe('changeTurn and currentSymbol', function() {
+    var testGame;
+    beforeAll(function() {
+      testGame = new Game();
+    });
+
+    it('checks if the turn and the symbol is set to the defualts', function() {
+      expect(testGame.currentSymbol()).toEqual('X');
+      expect(testGame.turn).toEqual(1);
+    });
+
+    it('checks if the turn advances and the symbol changes accordingly', function() {
+      testGame.changeTurn();
+      expect(testGame.currentSymbol()).toEqual('O');
+      expect(testGame.turn).toEqual(2);
+    });
+  });
+
+  describe('checkWin', function() {
+    var testGame;
+    beforeAll(function() {
+      testGame = new Game();
+      testGame.play('1a'); //curent player = X
+      testGame.play('1b');
+      testGame.play('2a');
+      testGame.play('2b');
+    });
+
+    it('checks if the game is still on when no one has yet won', function() {
+      expect(testGame.checkWin()).toEqual(false);
+    });
+
+    it('checks if the game ends when someone wins', function() {
+      expect(testGame.play('3a')).toEqual(true);
     });
   });
 

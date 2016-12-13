@@ -66,6 +66,7 @@ Board.prototype.fill = function(position, symbol) {
   var [v, h] = this.cleanUpInput(position);
 
   this.boardArray[v][h] = symbol;
+  return this.boardArray;
 };
 
 
@@ -121,12 +122,12 @@ Game.prototype.getPosition = function(err, result) {
     // set variable
     var position = result.position;
 
-    game1.checkPosition(position); //This game1 is named at the bottom of this file
+    game1.play(position); //This game1 is named at the bottom of this file
 
 };
 
 // Check position (play the input and switch turns)
-Game.prototype.checkPosition = function(position) {
+Game.prototype.play = function(position) {
 
   if (this.checkPlacement(position) === true) {
     var board = this.b1.fill(position, this.currentSymbol());
@@ -135,7 +136,11 @@ Game.prototype.checkPosition = function(position) {
     if (win !== true) {
       this.changeTurn();
       this.startTurn();
+      return false;
+    } else {
+      return true;
     }
+
   }
 };
 
@@ -188,6 +193,7 @@ Game.prototype.checkPlacement = function(position) {
   if (this.b1.boardArray[v][h] != ' ') {
     console.log('That space is not available! Try Again');
     this.startTurn();
+    return false;
   }
   else {
     return true;
