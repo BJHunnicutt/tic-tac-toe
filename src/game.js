@@ -132,12 +132,7 @@ Game.prototype.checkPosition = function(position) {
     var board = this.b1.fill(position, this.currentSymbol());
     var win = this.checkWin();
 
-    console.log('Win? ' + win);
-    if (win === true) {
-      console.log("Player " + this.turn + " Wins!!!");
-      return;
-    }
-    else {
+    if (win !== true) {
       this.changeTurn();
       this.startTurn();
     }
@@ -147,29 +142,44 @@ Game.prototype.checkPosition = function(position) {
 Game.prototype.checkWin = function() {
   var ba = this.b1.boardArray;
   var s = this.currentSymbol();
-  console.log('ba: ' + ba + ' s: ' + s);
+  var win;
+  var tie;
 
+  // Check horizontal and vertical wins
   for (var i in [0, 1, 2]) {
     if (ba[0][i] == s && ba[1][i] == s && ba[2][i] == s) {
-      console.log('vertical');
-      return true;
+      win = true;
     }
     else if (ba[i][0] == s && ba[i][1] == s && ba[i][2] == s) {
-      console.log('horizontal');
-      return true;
+      win = true;
     }
   }
 
+  // Check diaganol wins
   if (ba[0][0] == s && ba[1][1] == s && ba[2][2] == s) {
-    console.log('diaganol');
-    return true;
+    win = true;
   }
   else if (ba[0][2] == s && ba[1][1] == s && ba[2][0] == s) {
-    console.log('diaganol');
-    return true;
+    win = true;
   }
 
-  return false;
+  // Check for a tie
+  if ( !([].concat.apply([], ba)).includes(' ') ) {
+    tie = true;
+  }
+
+  // Declare win, tie, or false if neither.
+  if (win === true) {
+    console.log("\n\n\n\t\t Player " + this.turn + " Wins!!! \n\n\n");
+    return true;
+  }
+  else if (tie === true) {
+    console.log("\n\n\n\t\t Cat's Game! Try Again... \n\n\n");
+    return true;
+  }
+  else {
+    return false;
+  }
 };
 
 Game.prototype.checkPlacement = function(position) {
