@@ -21,11 +21,11 @@ Game.prototype.startTurn = function() {
   // Display the board
   console.log(this.b1.getBoard());
   // Prompt user to input :
-  console.log(" ------------------------------------------------------------------------------\n" +
-  "|                           Player " + this.turn + " (" + this.currentSymbol() + ")                                      |\n" +
-  " ------------------------------------------------------------------------------\n" +
-  "|         POSITION: Enter the location of your play (e.g 2A)                   |\n" +
-  " ------------------------------------------------------------------------------");
+  console.log(" ------------------------------------------ \n" +
+  "|             Player " + this.turn + " (" + this.currentSymbol() + ")                 |\n" +
+  " ------------------------------------------ \n" +
+  "|  Where would you like to play? (e.g 2A)  | \n" +
+  " ------------------------------------------ ");
   prompt.get(['position'], this.getPosition);
 };
 
@@ -108,11 +108,14 @@ Game.prototype.checkWin = function() {
   }
   // Declare win, tie, or false if neither.
   if (win === true) {
-    console.log("\n\n\n\t\t Player " + this.turn + " Wins!!! \n\n\n");
+    // Display the board
+    console.log(this.b1.getBoard());
+    console.log("\n\n\n\t   Player " + this.turn + " Wins!!! \n\n\n");
     return true;
   }
   else if (tie === true) {
-    console.log("\n\n\n\t\t Cat's Game! Try Again... \n\n\n");
+    console.log(this.b1.getBoard());
+    console.log("\n\n\n\t Cat's Game! Try Again... \n\n\n");
     return true;
   }
   else { return false; }
@@ -125,7 +128,7 @@ Game.prototype.checkPlacement = function(position) {
     var [v, h] = this.b1.cleanUpInput(position);
     // Check if a position has already been used
     if (this.b1.boardArray[v][h] != ' ') {
-      console.log('\n\n\n\t\t That space is not available! Try Again \n\n\n');
+      console.log('\n\n\n\t That space is not available! Try Again \n\n\n');
       this.startTurn();
       return false;
     }
@@ -134,7 +137,7 @@ Game.prototype.checkPlacement = function(position) {
     }
   }
   else {
-    console.log('\n\n\n\t\t That is not a valid position. The input should be formatted as a number and a letter (e.g. 1A). Try Again! \n\n\n');
+    console.log('\n\n\n\t That is not a valid position. The input should be formatted as a number and a letter (e.g. 1A). Try Again! \n\n\n');
     this.startTurn();
     return false;
   }
