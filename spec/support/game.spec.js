@@ -18,8 +18,20 @@ describe('Game', function() {
         expect(testGame.turn).toEqual(1);
     });
 
+  });
+
+  describe('board', function() {
+    var testGame;
+    beforeAll(function() {
+      testGame = new Game();
+    });
+
     it('should make a board with an array of 3 arrays', function() {
         expect(testGame.b1.boardArray).toEqual([[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]);
+    });
+
+    it('get board should return a string of the board ', function() {
+        expect(testGame.b1.getBoard()).toEqual(jasmine.any(String));
     });
   });
 
@@ -32,7 +44,6 @@ describe('Game', function() {
     it('get board should return a string of the board ', function() {
         expect(testGame.b1.getBoard()).toEqual(jasmine.any(String));
     });
-
   });
 
 });
