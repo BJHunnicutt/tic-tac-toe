@@ -34,12 +34,49 @@ Board.prototype.getBoard = function() {
   return board;
 };
 
+Board.prototype.cleanUpInput = function(position) {
+  var positionArray = [];
+  console.log(position)
+  var letter = position[1].toUpperCase();
+  positionArray[0] = position[0]-1;
+
+  switch (letter) {
+    case "A":
+      positionArray[1] = "0";
+      break;
+    case "B":
+      positionArray[1] = "1";
+      break;
+    case "C":
+      positionArray[1] = "2";
+      break;
+  }
+
+  var v = parseInt(positionArray[0]);
+  var h = parseInt(positionArray[1]);
+
+  console.log('v = '+ v + " h = " + h);
+
+  return [v, h];
+};
+
+// Place the word in the board array variable in the correct place/orientation
+Board.prototype.fill = function(position, symbol) {
+  // check_coverage(word, start_position, direction)
+  var [v, h] = this.cleanUpInput(position);
+
+  this.boardArray[v][h] = symbol;
+};
+
+
+
 var Game = function() {
   this.p1 = 'X';
   this.p2 = 'O';
   this.turn = 1;
   this.b1 = new Board();
-  this.play();
+  console.log("New Game");
+  this.startTurn();
 };
 
 Game.prototype.currentSymbol = function() {
@@ -53,18 +90,29 @@ Game.prototype.currentSymbol = function() {
     return symbol;
  };
 
-// play(): Goes back and forth having 2 players play words until someone wins
-Game.prototype.play = function() {
-  // that = this;
-  // Prompt user to input :
+ Game.prototype.changeTurn = function() {
+     if (this.turn == 1) {
+       this.turn = 2;
+     }
+     else if (this.turn == 2) {
+       this.turn = 1;
+     }
+     return this.turn;
+  };
 
+// startTurn(): calls prompt
+Game.prototype.startTurn = function() {
+  // Display the board
+  console.log(this.b1.getBoard());
+  // Prompt user to input :
   console.log(" ------------------------------------------------------------------------------\n" +
-  "|                           Player " + this.turn + " (" + this.currentSymbol() + ")                                  |\n" +
+  "|                           Player " + this.turn + " (" + this.currentSymbol() + ")                                      |\n" +
   " ------------------------------------------------------------------------------\n" +
-  "|         POSITION: Enter the location of your play (e.g 2A)                      |\n" +
+  "|         POSITION: Enter the location of your play (e.g 2A)                   |\n" +
   " ------------------------------------------------------------------------------");
   prompt.get(['position'], this.getPosition);
 };
+
 
 Game.prototype.getPosition = function(err, result) {
     // Error handling
@@ -77,11 +125,48 @@ Game.prototype.getPosition = function(err, result) {
 
 };
 
-Game.prototype.checkPosition = function() {
-  console.log("In checkPosition");
-
+// Check position (play the input and switch turns)
+Game.prototype.checkPosition = function(position) {
+  var board = this.b1.fill(position, this.currentSymbol());
+  var win = this.checkWin();
+  console.log('Win? ' + win);
+  if (win === true) {
+    console.log("Player " + this.turn + " Wins!!!");
+    return;
+  }
+  else {
+    this.changeTurn();
+    this.startTurn();
+  }
 };
 
+Game.prototype.checkWin = function() {
+  var ba = this.b1.boardArray;
+  var s = this.currentSymbol();
+  console.log('ba: ' + ba + ' s: ' + s);
+
+  for (var i in [0, 1, 2]) {
+    if (ba[0][i] == s && ba[1][i] == s && ba[2][i] == s) {
+      console.log('vertical');
+      return true;
+    }
+    else if (ba[i][0] == s && ba[i][1] == s && ba[i][2] == s) {
+      console.log('horizontal');
+      return true;
+    }
+  }
+
+  if (ba[0][0] == s && ba[1][1] == s && ba[2][2] == s) {
+    console.log('diaganol');
+    return true;
+  }
+  else if (ba[0][2] == s && ba[1][1] == s && ba[2][0] == s) {
+    console.log('diaganol');
+    return true;
+  }
+
+  return false;
+};
 
 export default Game;
 
