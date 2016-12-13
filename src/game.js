@@ -127,16 +127,20 @@ Game.prototype.getPosition = function(err, result) {
 
 // Check position (play the input and switch turns)
 Game.prototype.checkPosition = function(position) {
-  var board = this.b1.fill(position, this.currentSymbol());
-  var win = this.checkWin();
-  console.log('Win? ' + win);
-  if (win === true) {
-    console.log("Player " + this.turn + " Wins!!!");
-    return;
-  }
-  else {
-    this.changeTurn();
-    this.startTurn();
+
+  if (this.checkPlacement(position) === true) {
+    var board = this.b1.fill(position, this.currentSymbol());
+    var win = this.checkWin();
+
+    console.log('Win? ' + win);
+    if (win === true) {
+      console.log("Player " + this.turn + " Wins!!!");
+      return;
+    }
+    else {
+      this.changeTurn();
+      this.startTurn();
+    }
   }
 };
 
@@ -166,6 +170,18 @@ Game.prototype.checkWin = function() {
   }
 
   return false;
+};
+
+Game.prototype.checkPlacement = function(position) {
+  var [v, h] = this.b1.cleanUpInput(position);
+  console.log('space: ' + this.b1.boardArray[v][h]);
+  if (this.b1.boardArray[v][h] != ' ') {
+    console.log('That space is not available! Try Again');
+    this.startTurn();
+  }
+  else {
+    return true;
+  }
 };
 
 export default Game;
