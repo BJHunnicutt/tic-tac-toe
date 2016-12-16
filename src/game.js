@@ -1,4 +1,5 @@
 // game.js
+// test
 
 import Board from "board"; // It automatically knows to look in the src directory
 
