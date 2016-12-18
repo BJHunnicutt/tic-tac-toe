@@ -1,8 +1,18 @@
 
 body, h1, h2, h3, h4, h5 {
   font-family: 'Walter Turncoat', cursive;
-
 }
+
+/* These things (html and body are actually for the footer)*/
+/*html {
+  height: 100%;
+}
+
+main {
+  position: relative;
+  margin: 0;
+  height: 100%;
+}*/
 
 ::selection {
   background-color: none;
@@ -12,7 +22,7 @@ body, h1, h2, h3, h4, h5 {
 h1 {
   /*Trick to make the text shaddow inset: https://codemyviews.com/blog/inner-shadows-in-css-images-text-and-beyond*/
   background-color: rgba(24, 15, 7, 0.85);
-  font-weight: bold;
+  /*font-weight: bold;*/
 
   color: transparent;
   text-shadow: 0.04em 0.04em 2px rgba(255, 255, 255, 0.35);
@@ -28,7 +38,7 @@ h2, h3 {
   background-color: rgba(17, 10, 5, 1);
   font-weight: bold;
   color: transparent;
-  text-shadow: 1.5px 1.5px 0.5px rgba(255, 255, 255, 0.35);
+  text-shadow: 0.06em 0.06em 0.5px rgba(255, 255, 255, 0.35);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
@@ -38,15 +48,20 @@ header {
   text-align: center;
 }
 
+
+
+
+/* ------------------ NEW GAME FORM ------------------- */
+
 [type="text"] {
-  background-color: rgba(0,0,0,0.45);
+  background-color: rgba(0,0,0,0.35);
   box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);
   border: none;
   border-radius: 5px;
 }
 
 [type="text"]:focus {
-  background-color: rgba(242, 233, 225, 0.45);
+  background-color: rgba(242, 233, 225, 0.25);
   box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);
 
 }
@@ -58,16 +73,63 @@ header {
   /*box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);*/
   border: none;
   border-radius: 5px;
-
 }
 
 .button:hover {
   /*background-color: rgba(255, 255, 255, 0.75);*/
   background-color: rgba(242, 233, 225, 0.5);
   box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);
-
   color: black;
 }
+
+/* --------------- end NEW GAME FORM --------------- */
+
+
+
+
+
+/* ------------------ BOARD ------------------- */
+#contact-cards {
+  padding: 0 10%;
+}
+
+/* Making tic-tac-toe board lines... might be a dumb way to do it. */
+.contact-card:nth-child(1), .contact-card:nth-child(2), .contact-card:nth-child(4), .contact-card:nth-child(5)  {
+  border-right: 8px solid rgba(0,0,0,0.6);
+  border-bottom: 8px solid rgba(0,0,0,0.6);
+  box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
+}
+.contact-card:nth-child(3), .contact-card:nth-child(6) {
+  border-bottom: 8px solid rgba(0,0,0,0.6);
+  box-shadow: -0.25px 2px 0.5px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0.5px rgba(0, 0, 0, 0.95); /* white highlight*/
+}
+.contact-card:nth-child(7), .contact-card:nth-child(8) {
+  border-right: 8px solid rgba(0,0,0,0.6);
+  box-shadow: 2px 0px 2px rgba(232, 221, 211, 0.75), inset -2px 0px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
+}
+/* end board lines */
+
+
+.new-game-form {
+  text-align: center;
+  border-left-color: black;
+}
+
+.contact-card {
+  /*background-color: rgba(0, 255, 255, 0.5);*/
+  height: 25vh;
+  /*border: 1px solid black;*/
+  list-style-type: none;
+}
+
+.contact-card:hover {
+  background-color: rgba(0,0,0,0.35);
+}
+
+/* ------------------ end BOARD ------------------- */
+
+
+
 
 
 /* ------------------ Background image ------------------- */
@@ -84,7 +146,7 @@ header {
 }
 
 .bg-overlay {
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255,230,255,0.1);
   height: 120vh;
   width: 100%;
   position: fixed;
@@ -108,15 +170,3 @@ header {
 }*/
 
 /* ---------------- end  Background image ------------------- */
-
-
-/* These things (html and body are actually for the footer)*/
-html {
-  height: 100%;
-}
-
-main {
-  position: relative;
-  margin: 0;
-  height: 100%;
-}
