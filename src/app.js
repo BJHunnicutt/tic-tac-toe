@@ -5,7 +5,7 @@ import _ from 'underscore';
 import Game from 'app/models/game';
 import ApplicationView from 'app/views/application_view';
 
-var game = new Game({
+let game = new Game({
   squares: [
     {contents: " ", location: 0},
     {contents: " ", location: 1},
@@ -13,7 +13,7 @@ var game = new Game({
     {contents: " ", location: 3},
     {contents: " ", location: 4},
     {contents: " ", location: 5},
-    {contents: " ", location: 6},
+    {contents: "O", location: 6},
     {contents: " ", location: 7},
     {contents: " ", location: 8}
   ],

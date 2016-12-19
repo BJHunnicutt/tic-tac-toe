@@ -3,6 +3,11 @@
   <head>
     <title>Tic-Tac-Toe</title>
     <meta charset="utf-8">
+    <!-- Foundation Mobile responsive tags -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Foundation Mobile responsive tags -->
+
     <link rel="stylesheet" href="/styles/foundation.css">
     <link rel="stylesheet" href="/styles/app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Walter+Turncoat">
@@ -17,18 +22,17 @@
     </header>
 
     <main>
-        <div class="row">
-          <div id="game" class="large-8 medium-8 columns">
-            <div class="row">
-              <ul id="symbol-cards" class="row align-center">
-
-              </ul>
-            </div>
-
+      <div class="row">
+        <div id="game" class="large-8 medium-8 small-12 columns">
+          <div class="row">
+            <ul id="symbol-cards" class="row align-center">
+                <!-- insert "tmpl-symbol-card" template here -->
+            </ul>
+          </div>
           <section id="contact-details"></section>
         </div>
 
-        <div class="large-4 medium-4 columns">
+        <div class="large-4 medium-4 small-12 columns">
           <section class="row new-game-form">
             <h2>New Game</h2>
             <div class="columns">
@@ -52,6 +56,7 @@
 
     <!-- Underscore Templates -->
     <script type="text/template" id="tmpl-symbol-card">
+      <!-- Moved the tag and class specification for this template to the squareView.js with tagName and className -->
       <!-- <li class="symbol-card large-4 medium-4 small-4 columns"> -->
         <h4><%- contents %></h4>
       <!-- </li> -->
@@ -65,5 +70,7 @@
 
     <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>
+    <!-- <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
+
   </body>
 </html>

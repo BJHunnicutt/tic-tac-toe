@@ -16,6 +16,10 @@ const BoardView = Backbone.View.extend({
     'click .undo': 'undoPlay',
   },
 
+  playSymbol: {
+
+  },
+
   render: function() {
     // console.log(this.model);
 
@@ -27,7 +31,7 @@ const BoardView = Backbone.View.extend({
         model: square,
       });
 
-      // self.listenTo(card, 'select', self.showCard);
+      // self.listenTo(card, 'play', self.playSymbol);
 
       cardList.append(card.render().$el);
     }, this);
