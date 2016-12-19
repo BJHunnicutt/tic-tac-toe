@@ -1,9 +1,10 @@
-import Backbone from 'backbone';
+// import Backbone from 'backbone';
+
 import BoardView from 'app/views/board_view';
 
 const GameView = Backbone.View.extend({
   initialize: function() {
-    this.render();
+
   },
 
   events: {
@@ -12,6 +13,7 @@ const GameView = Backbone.View.extend({
   },
 
   render: function() {
+
     return this;
   }
 });

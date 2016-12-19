@@ -3,16 +3,12 @@ body, h1, h2, h3, h4, h5 {
   font-family: 'Walter Turncoat', cursive;
 }
 
-/* These things (html and body are actually for the footer)*/
-/*html {
-  height: 100%;
-}
 
 main {
   position: relative;
-  margin: 0;
+  padding: 5% 0%;
   height: 100%;
-}*/
+}
 
 ::selection {
   background-color: none;
@@ -46,6 +42,9 @@ h2, h3 {
 
 header {
   text-align: center;
+  border-bottom: 8px solid rgba(0,0,0,0.6);
+  box-shadow: -0.25px 2px 1px rgba(232, 221, 211, 0.75), inset 0.25px -2px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
+
 }
 
 
@@ -89,21 +88,21 @@ header {
 
 
 /* ------------------ BOARD ------------------- */
-#contact-cards {
+#symbol-cards {
   padding: 0 10%;
 }
 
 /* Making tic-tac-toe board lines... might be a dumb way to do it. */
-.contact-card:nth-child(1), .contact-card:nth-child(2), .contact-card:nth-child(4), .contact-card:nth-child(5)  {
+.symbol-card:nth-child(1), .symbol-card:nth-child(2), .symbol-card:nth-child(4), .symbol-card:nth-child(5)  {
   border-right: 8px solid rgba(0,0,0,0.6);
   border-bottom: 8px solid rgba(0,0,0,0.6);
   box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
-.contact-card:nth-child(3), .contact-card:nth-child(6) {
+.symbol-card:nth-child(3), .symbol-card:nth-child(6) {
   border-bottom: 8px solid rgba(0,0,0,0.6);
   box-shadow: -0.25px 2px 0.5px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0.5px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
-.contact-card:nth-child(7), .contact-card:nth-child(8) {
+.symbol-card:nth-child(7), .symbol-card:nth-child(8) {
   border-right: 8px solid rgba(0,0,0,0.6);
   box-shadow: 2px 0px 2px rgba(232, 221, 211, 0.75), inset -2px 0px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
@@ -115,14 +114,14 @@ header {
   border-left-color: black;
 }
 
-.contact-card {
+.symbol-card {
   /*background-color: rgba(0, 255, 255, 0.5);*/
   height: 25vh;
   /*border: 1px solid black;*/
   list-style-type: none;
 }
 
-.contact-card:hover {
+.symbol-card:hover {
   background-color: rgba(0,0,0,0.35);
 }
 

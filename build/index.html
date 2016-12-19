@@ -8,78 +8,77 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Walter+Turncoat">
   </head>
   <body>
-    <div id="application">
-      <section class="bg-overlay"></section>
-      <section class="bg-image"></section>
+    <section class="bg-overlay"></section>
+    <section class="bg-image"></section>
 
-      <header>
-        <h1>Tic-Tac-Toe</h1>
-      </header>
+    <header>
+      <h1>Tic-Tac-Toe</h1>
+    </header>
 
-      <main>
+    <main>
         <div class="row">
-          <div class="large-8 medium-8 columns">
+          <div id="game" class="large-8 medium-8 columns">
             <div class="row">
-              <ul id="contact-cards" class="row align-center">
-                <li class="contact-card large-4 medium-4 small-4 columns">
+              <ul id="symbol-cards" class="row align-center">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
-                <li class="contact-card large-4 medium-4 small-4 columns">
+                <li class="symbol-card large-4 medium-4 small-4 columns">
 
                 </li>
               </ul>
             </div>
-          </div>
-
-          <div class="large-4 medium-4 columns">
-            <section class="row new-game-form">
-              <h2>New Game</h2>
-              <div class="columns">
-                <label>
-                  <h3>Player 1</h3>
-                  <input type="text" name="player1">
-                </label>
-                <label>
-                  <h3>Player 2</h3>
-                  <input type="text" name="player2">
-                </label>
-                <h4 class="button btn-newgame"> Play! </h4>
-                <h4 class="button btn-cancel"> Clear </h4>
-                <h4 class="button btn-continue"> Play Another game with same players </h4>
-              </div>
-            </section>
-          </div>
 
           <section id="contact-details"></section>
         </div>
-      </main>
-    </div>
+
+        <div class="large-4 medium-4 columns">
+          <section class="row new-game-form">
+            <h2>New Game</h2>
+            <div class="columns">
+              <label>
+                <h3>Player 1</h3>
+                <input type="text" name="player1">
+              </label>
+              <label>
+                <h3>Player 2</h3>
+                <input type="text" name="player2">
+              </label>
+              <h4 class="button btn-newgame"> Play! </h4>
+              <h4 class="button btn-cancel"> Clear </h4>
+              <h4 class="button btn-continue"> Play Another game with same players </h4>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </main>
 
     <!-- Underscore Templates -->
-    <script type="text/template" id="tmpl-contact-card">
-      <li class="contact-card small-11 medium-4 large-2 medium-offset-1 columns">
-        <h4><%- name %></h4>
+    <script type="text/template" id="tmpl-symbol-card">
+      <li class="symbol-card large-4 medium-4 small-4 columns">
+        <h4><%- contents %></h4>
       </li>
     </script>
 
