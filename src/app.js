@@ -15,8 +15,7 @@ var game = new Game({
     {contents: " ", location: 5},
     {contents: " ", location: 6},
     {contents: " ", location: 7},
-    {contents: " ", location: 8},
-    {contents: " ", location: 9}
+    {contents: " ", location: 8}
   ],
   player1: 'Player 1',
   player2: 'Player 2',

@@ -14,7 +14,7 @@ const SquareView = Backbone.View.extend({
 
   playSymbol: function(e) {
     // this.trigger('select', this);
-    console.log("Symbol Square was clicked");
+    console.log("Symbol Square: "+ this.model.attributes.location + '(' +this.model.attributes.contents + ") was clicked");
     // We return false to tell jQuery not to run any more event handlers.
     // Otherwise, it would run the 'click' event handler on BoardView
     // as well.

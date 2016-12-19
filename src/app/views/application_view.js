@@ -1,4 +1,7 @@
-// import Backbone from 'backbone';
+import $ from 'jquery';
+import Backbone from 'backbone';
+import _ from 'underscore';
+
 // import GameView from 'app/views/game_view';
 import BoardView from 'app/views/board_view';
 
@@ -11,7 +14,8 @@ const ApplicationView = Backbone.View.extend({
 
   events: {
     'click .btn-newgame': 'newGame',
-    'click .btn-cancel': 'clearForm'
+    'click .btn-cancel': 'clearForm',
+    'click .btn-continue': 'anotherGame'
   },
 
   newGame: function(e) {
@@ -30,8 +34,13 @@ const ApplicationView = Backbone.View.extend({
     console.log('Cancel Button Pressed');
   },
 
+  anotherGame: function() {
+    console.log('Play Again Button Pressed');
+  },
+
 
   render: function() {
+    // console.log(this.model.board);
     const boardView = new BoardView({
       model: this.model.board,
       el: this.$('#game')

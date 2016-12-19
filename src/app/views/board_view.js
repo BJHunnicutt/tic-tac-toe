@@ -17,13 +17,14 @@ const BoardView = Backbone.View.extend({
   },
 
   render: function() {
+    // console.log(this.model);
+
     const cardList = this.$('#symbol-cards');
     cardList.empty();
 
-    // const self = this;
-    this.model.forEach(function(contact) {
+    this.model.forEach(function(square) {
       const card = new SquareView({
-        model: contact
+        model: square,
       });
 
       // self.listenTo(card, 'select', self.showCard);
