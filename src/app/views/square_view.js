@@ -3,6 +3,9 @@ import Backbone from 'backbone';
 import _ from 'underscore';
 
 const SquareView = Backbone.View.extend({
+  tagName: 'li',
+  className: 'symbol-card large-4 medium-4 small-4 columns',
+
   initialize: function() {
     this.template = _.template(Backbone.$('#tmpl-symbol-card').html());
   },

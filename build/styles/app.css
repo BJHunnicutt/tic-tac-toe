@@ -1,6 +1,8 @@
 
 body, h1, h2, h3, h4, h5 {
-  font-family: 'Walter Turncoat', cursive;
+  /*font-family: 'Walter Turncoat', cursive;*/
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 300;
 }
 
 
@@ -17,33 +19,31 @@ main {
 
 h1 {
   /*Trick to make the text shaddow inset: https://codemyviews.com/blog/inner-shadows-in-css-images-text-and-beyond*/
-  background-color: rgba(24, 15, 7, 0.85);
-  /*font-weight: bold;*/
-
+  /*background-color: rgba(24, 15, 7, 0.85);
   color: transparent;
   text-shadow: 0.04em 0.04em 2px rgba(255, 255, 255, 0.35);
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
-  font-size: 12vw;
+  font-size: 12vw;*/
 }
 
 h2, h3 {
-  /*color: rgb(0,0,0);
-  text-shadow: 0.5px 0.5px 0px rgba(213, 201, 184, 1), -0.5px -0.5px 0px rgba(54, 45, 37,.9)*/
-  background-color: rgba(17, 10, 5, 1);
+  color: rgb(0,0,0);
+  text-shadow: 0.5px 0.5px 0px rgba(213, 201, 184, 1), -0.5px -0.5px 0px rgba(54, 45, 37,.9)
+  /*background-color: rgba(17, 10, 5, 1);
   font-weight: bold;
   color: transparent;
   text-shadow: 0.06em 0.06em 0.5px rgba(255, 255, 255, 0.35);
   -webkit-background-clip: text;
      -moz-background-clip: text;
-          background-clip: text;
+          background-clip: text;*/
 }
 
 header {
   text-align: center;
   border-bottom: 8px solid rgba(0,0,0,0.6);
-  box-shadow: -0.25px 2px 1px rgba(232, 221, 211, 0.75), inset 0.25px -2px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
+  /*box-shadow: -0.25px 2px 1px rgba(232, 221, 211, 0.75), inset 0.25px -2px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
 
 }
 
@@ -54,30 +54,27 @@ header {
 
 [type="text"] {
   background-color: rgba(0,0,0,0.35);
-  box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);
+  /*box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);*/
   border: none;
   border-radius: 5px;
 }
 
 [type="text"]:focus {
   background-color: rgba(242, 233, 225, 0.25);
-  box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);
+  /*box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);*/
 
 }
 
 .button {
   background-color: rgba(0, 0, 0, 0.75);
   color: rgba(242, 233, 225, 0.75);
-  /*text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 1), -0.5px -0.5px 0px rgba(0,0,0, 1)*/*/
-  /*box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);*/
   border: none;
   border-radius: 5px;
 }
 
 .button:hover {
-  /*background-color: rgba(255, 255, 255, 0.75);*/
   background-color: rgba(242, 233, 225, 0.5);
-  box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);
+  /*box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);*/
   color: black;
 }
 
@@ -96,15 +93,15 @@ header {
 .symbol-card:nth-child(1), .symbol-card:nth-child(2), .symbol-card:nth-child(4), .symbol-card:nth-child(5)  {
   border-right: 8px solid rgba(0,0,0,0.6);
   border-bottom: 8px solid rgba(0,0,0,0.6);
-  box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
+  /*box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
 }
 .symbol-card:nth-child(3), .symbol-card:nth-child(6) {
   border-bottom: 8px solid rgba(0,0,0,0.6);
-  box-shadow: -0.25px 2px 0.5px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0.5px rgba(0, 0, 0, 0.95); /* white highlight*/
+  /*box-shadow: -0.25px 2px 0.5px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0.5px rgba(0, 0, 0, 0.95); /* white highlight*/*/
 }
 .symbol-card:nth-child(7), .symbol-card:nth-child(8) {
   border-right: 8px solid rgba(0,0,0,0.6);
-  box-shadow: 2px 0px 2px rgba(232, 221, 211, 0.75), inset -2px 0px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
+  /*box-shadow: 2px 0px 2px rgba(232, 221, 211, 0.75), inset -2px 0px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
 }
 /* end board lines */
 
@@ -135,7 +132,7 @@ header {
 
 .bg-image {
   /*background-color: cyan;*/
-  background-image: url("/assets/aged_boards.jpg");
+  /*background-image: url("/assets/aged_boards.jpg");*/
   background-size: cover;
   height: 120vh;
   width: 100%;
