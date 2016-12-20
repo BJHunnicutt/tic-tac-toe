@@ -4,7 +4,7 @@ const Square = Backbone.Model.extend({
   // Default attributes if none are passed in
   defaults: {
     contents: " ",
-    location: [0,0]
+    location: 0
   }
 });
 
