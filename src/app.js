@@ -9,11 +9,11 @@ let game = new Game({
   squares: [
     {contents: " ", location: 0},
     {contents: " ", location: 1},
-    {contents: "X", location: 2},
+    {contents: " ", location: 2},
     {contents: " ", location: 3},
     {contents: " ", location: 4},
     {contents: " ", location: 5},
-    {contents: "O", location: 6},
+    {contents: " ", location: 6},
     {contents: " ", location: 7},
     {contents: " ", location: 8}
   ],

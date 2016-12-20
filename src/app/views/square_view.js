@@ -13,11 +13,10 @@ const SquareView = Backbone.View.extend({
 
   events: {
     'click': 'selectSquare',
-
   },
 
   selectSquare: function(e) {
-    // this.trigger('play', this);
+    this.trigger('play', this);
 
     console.log("Symbol Square: "+ this.model.attributes.location + '(' +this.model.attributes.contents + ") was clicked");
 

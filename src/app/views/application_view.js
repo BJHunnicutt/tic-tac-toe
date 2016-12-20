@@ -10,6 +10,7 @@ const ApplicationView = Backbone.View.extend({
   initialize: function() {
 
     this.render();
+    this.listenTo('play', this.playSymbol);
   },
 
   events: {
@@ -40,9 +41,10 @@ const ApplicationView = Backbone.View.extend({
 
 
   render: function() {
-    // console.log(this.model.board);
+    // console.log(this.model.get("turn"));
     const boardView = new BoardView({
-      model: this.model.board,
+      collection: this.model.board,
+      // model: this.model.get("turn"), //dont use this...
       el: this.$('#game')
     });
     boardView.render();

@@ -14,7 +14,6 @@ const Game = Backbone.Model.extend({
     this.set("player_1", options.player1);
     this.set("player_2", options.player2);
     this.set("outcome", null);
-    this.set("turn", "X");
   }
 
 });
