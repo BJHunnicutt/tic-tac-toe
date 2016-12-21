@@ -140,6 +140,7 @@ header {
 
 .bg-image {
   /*background-color: cyan;*/
+  /*background-image: url("/assets/colorspots.png");*/
   /*background-image: url("/assets/aged_boards.jpg");*/
   background-size: cover;
   height: 120vh;
