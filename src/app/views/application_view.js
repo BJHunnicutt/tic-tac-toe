@@ -24,12 +24,21 @@ const ApplicationView = Backbone.View.extend({
   },
 
   newGame: function(e) {
-    // var gameAttrs = {
-    //   name: this.$('.new-game-form input[name="player1"]').val(),
-    //   email: this.$('.new-game-form input[name="player2"]').val()
-    // };
+    var gameAttrs = {
+      player1: this.$('.new-game-form input[name="player1"]').val(),
+      player2: this.$('.new-game-form input[name="player2"]').val()
+    };
+
+    // Create a new game model with the input player names
+    let game = new Game({player1: gameAttrs.player1, player2: gameAttrs.player2});
+    this.model.clear();
+    this.model = game;
+      // console.log("Player 1: " + this.model.get("player1"));
+
+
     // this.model.rolodex.add(gameAttrs);
-    // this.clearForm();
+    this.clearForm();
+    this.render();
     console.log('Save Button Pressed');
 
   },
@@ -58,16 +67,17 @@ const ApplicationView = Backbone.View.extend({
   displayEndGame: function(event) {
 
     let outcome = this.model.board.checkWin();
+    this.model.updateOutcomes(outcome);
     let modal_message;
 
     if (outcome === "tie") {
       modal_message = "Cat's Game!";
     } else if (outcome === "X" ) {
-      modal_message = this.model.get("player1") + " Won!";
+      modal_message = this.model.get("player1") + " Wins!";
     }  else if (outcome === "O" ) {
-      modal_message = this.model.get("player2") + " Won!";
+      modal_message = this.model.get("player2") + " Wins!";
     }
-    console.log(modal_message);
+    // console.log(modal_message);
 
 
     // assign the proper values to the proper location in the template
@@ -83,25 +93,44 @@ const ApplicationView = Backbone.View.extend({
 
   },
 
-hideModal: function(e) {
-  // There are many ways to implement the logic for hiding a modal.
-  // In this case I've handled the possibility of clicking anywhere on
-  // the RolodexView's controlled area (the whole right side of the page)
-  // and if we didn't click specifically on the modal, then we consider
-  // that as choosing to close it.
+  hideModal: function(e) {
+    // // The actual DOM element for the modal
+    const modalElement = this.gameOverModal[0];
+    const clickedOnModal = (modalElement == e.target); // OR (modalElement == e.target || Backbone.$.contains(modalElement, e.target)); //If you also want to include clicking on elements inside the modal, but I want it to close if a button is clicked.
 
-  // // The actual DOM element for the modal
-  const modalElement = this.gameOverModal[0];
-  const clickedOnModal = (modalElement == e.target ||
-                          Backbone.$.contains(modalElement, e.target));
+    if (this.gameOverModal.is(':visible') && !clickedOnModal) {
+      this.gameOverModal.fadeOut();
+      // Also close the transparent div I covered everything else in.
+      this.$('#background-cover').hide();
+      this.anotherGame();
+    }
 
+  },
 
-  if(this.gameOverModal.is(':visible') && !clickedOnModal) {
-    this.gameOverModal.fadeOut();
-    this.$('#background-cover').hide();
-  }
-},
+  render_scores: function() {
+    console.log("Rendering Scores");
+    this.scoreTemplate = _.template(Backbone.$('#tmpl-player-details').html());
 
+    var score_details = [
+      this.scoreTemplate({
+        name: this.model.get("player1"),
+        wins: this.model.get("outcomes")[0]
+      }),
+      this.scoreTemplate({
+        name: "Tie",
+        wins: this.model.get("outcomes")[1]
+      }),
+      this.scoreTemplate({
+        name: this.model.get("player2"),
+        wins: this.model.get("outcomes")[2]
+      })
+    ];
+
+    $('#player1-details').html(score_details[0]);
+    $('#tie-details').html(score_details[1]);
+    $('#player2-details').html(score_details[2]);
+
+  },
 
   render: function() {
     // console.log(this.model.get("turn"));
@@ -113,6 +142,7 @@ hideModal: function(e) {
 
     this.listenTo(boardView, 'gameOver', this.displayEndGame);
 
+    this.render_scores();
     boardView.render();
     return this;
   }

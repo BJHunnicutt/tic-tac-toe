@@ -29,7 +29,18 @@
 
     <main>
       <div class="row">
-        <div id="game" class="large-8 medium-8 small-12 columns">
+        <div id="game" class="large-8 medium-12 small-12 columns">
+          <div id="scores" class="row">
+              <div id="player1-details" class="player-details large-4 medium-4 small-4 columns">
+                <!-- <h3> Jeannie </h3><h3> 2 </h3> -->
+              </div>
+              <div id="tie-details" class="large-4 medium-4 small-4 columns">
+                <!-- <h3> Tie </h3><h3> 1 </h3> -->
+              </div>
+              <div id="player2-details" class="large-4 medium-4 small-4 columns">
+                <!-- <h3> Lauren </h3><h3> 3 </h3> -->
+              </div>
+          </div>
           <div class="row">
             <ul id="symbol-cards" class="row align-center">
                 <!-- insert "tmpl-symbol-card" template here -->
@@ -38,21 +49,21 @@
           <section id="contact-details"></section>
         </div>
 
-        <div class="large-4 medium-4 small-12 columns">
+        <div class=" large-4 medium-12 small-12 columns ">
           <section class="row new-game-form">
-            <h2>New Game</h2>
+            <h4> New Matchup! </h4>
             <div class="columns">
               <label>
-                <h3>Player 1</h3>
+                <h5>Player 1</h5>
                 <input type="text" name="player1">
               </label>
               <label>
-                <h3>Player 2</h3>
+                <h5>Player 2</h5>
                 <input type="text" name="player2">
               </label>
-              <h4 class="button btn-newgame"> Play! </h4>
-              <h4 class="button btn-cancel"> Clear </h4>
-              <h4 class="button btn-continue"> Play Another game with same players </h4>
+              <h3 class="button btn-newgame"> Play </h3>
+              <h3 class="button btn-cancel"> Clear </h3>
+              <!-- <h4 class="button btn-continue"> Play Another game with same players </h4> -->
             </div>
           </section>
         </div>
@@ -70,8 +81,14 @@
       <!-- </li> -->
     </script>
 
+    <script type="text/template" id="tmpl-player-details">
+      <h3><%- name %></h3>
+      <h2><%- wins %></h2>
+    </script>
+
     <script type="text/template" id="tmpl-end-game">
       <h3><%- message %></h3>
+      <h4 class="button btn-continue"> Play Again? </h4>
     </script>
 
     <!-- Entire JS project built by Webpack -->

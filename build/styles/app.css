@@ -44,18 +44,19 @@ h2, h3 {
 header {
   text-align: center;
   border-bottom: 8px solid rgba(0,0,0,0.6);
-  /*box-shadow: -0.25px 2px 1px rgba(232, 221, 211, 0.75), inset 0.25px -2px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
-
+  /*box-shadow: -0.25px 2px 1px rgba(232, 221, 211, 0.75), inset 0.25px -2px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
+
+
 
 /* ------------ Game Over Modal -------------- */
 #game-over-modal {
-  background-color: red;
+  background-color: rgba(255, 215, 0, 0.85);
   position: fixed;
-  top: 40vh;
-  left: 40vw;
-  height: 100px;
-  width: 100px;
+  top: 25vh;
+  left: 25vw;
+  height: 50vh;
+  width: 50vw;
   z-index: 1000;
   display: none;
 }
@@ -75,7 +76,6 @@ header {
 
 
 /* ------------------ NEW GAME FORM ------------------- */
-
 [type="text"] {
   background-color: rgba(0,0,0,0.35);
   /*box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);*/
@@ -101,10 +101,15 @@ header {
   /*box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);*/
   color: black;
 }
-
 /* --------------- end NEW GAME FORM --------------- */
 
 
+
+/* ------------------ Scores ------------------- */
+#scores * {
+  text-align: center;
+}
+/* ---------------- End Scores ----------------- */
 
 
 
@@ -133,6 +138,12 @@ header {
 .new-game-form {
   text-align: center;
   border-left-color: black;
+  padding: 10%;
+}
+
+.game-wrap {
+  text-align: center;
+  display: inline-block;
 }
 
 .symbol-card {
@@ -152,7 +163,6 @@ header {
   line-height: 1;
   padding-top: 4vh;
 }
-
 /* ------------------ end BOARD ------------------- */
 
 
@@ -160,7 +170,6 @@ header {
 
 
 /* ------------------ Background image ------------------- */
-
 .bg-image {
   /*background-color: cyan;*/
   /*background-image: url("/assets/colorspots.png");*/
@@ -196,13 +205,11 @@ header {
 	-ms-behavior: url(backgroundsize.min.htc);
   z-index: -1;
 }*/
-
 /* ---------------- end  Background image ------------------- */
 
 
 
 /* ----------- Media Queries ----------- */
-
 @media screen and (max-width:300px) {
 
   .symbol-card h4 {

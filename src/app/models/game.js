@@ -30,7 +30,7 @@ const Game = Backbone.Model.extend({
     //   return new Square(attrs);
     // });
     this.board = new Board(base_board); // Alternatively, you can use loop above and put squares instead of base_board.squares, but that loop happens automatically in the Board collection setup
-    this.set("outcome", null);
+    this.set("outcomes", [0, 0, 0]);
 
     if (options.player1 === undefined || options.player1 === null || options.player1 === "") {
         this.set("player1", "Player 1");
@@ -59,6 +59,22 @@ const Game = Backbone.Model.extend({
     ]};
 
     this.board = new Board(blank_board.squares);
+  },
+
+  updateOutcomes: function(outcome) {
+    if (outcome === "tie") {
+      let o = this.get("outcomes");
+      o[1] = o[1] + 1;
+      this.set("outcomes", o);
+    } else if (outcome === "X" ) {
+      let o = this.get("outcomes");
+      o[0] = o[0] + 1;
+      this.set("outcomes", o);
+    }  else if (outcome === "O" ) {
+      let o = this.get("outcomes");
+      o[2] = o[2] + 1;
+      this.set("outcomes", o);
+    }
   }
 
 });
