@@ -51,7 +51,11 @@ header {
 
 /* ------------ Game Over Modal -------------- */
 #game-over-modal {
+  text-align: center;
+  padding-top: 15vh;
+  overflow: hidden;
   background-color: rgba(255, 215, 0, 0.85);
+  border-radius: 100%;
   position: fixed;
   top: 25vh;
   left: 25vw;
