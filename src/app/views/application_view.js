@@ -8,11 +8,16 @@ import BoardView from 'app/views/board_view';
 
 const ApplicationView = Backbone.View.extend({
   initialize: function() {
+    // Assign the Modal template that will be displayed when someone wins
+    this.gameOverTemplate = _.template(Backbone.$('#tmpl-end-game').html());
+    // Assign the DOM element where the template above will be inserted
+    this.gameOverModal = this.$('#game-over-modal');
 
     this.render();
   },
 
   events: {
+    'click': 'hideModal',
     'click .btn-newgame': 'newGame',
     'click .btn-cancel': 'clearForm',
     'click .btn-continue': 'anotherGame'
@@ -65,19 +70,37 @@ const ApplicationView = Backbone.View.extend({
     console.log(modal_message);
 
 
-    // var displayTemplate = _.template($('#tmpl-end-game').html());
-    //
-    // // assign the proper values to the proper location in the template
-    // var html = displayTemplate({
-    //   message: modal_message,
-    //   email: this.contact.attributes.email,
-    //   phone: formattedNumber,
-    // });
-    //
-    // // could also use .toJSON() instead of .attributes: b/c .attributes gives you direct access to the attributes, which can be bad because you bypass validations and can accidentally change them without triggering events.
-    // this.displayTemplate.fadeIn(); // Should have used this.displayTemplate.fadeIn(); instead of $('#contact-details').fadeIn(); (AND displayTemplate should have been set as this.displayTemplate)
-    // this.displayTemplate.html(html);  // Same as above
+    // assign the proper values to the proper location in the template
+    var gameOverDetails = this.gameOverTemplate({
+      message: modal_message,
+    });
+
+    // could also use .toJSON() instead of .attributes: b/c .attributes gives you direct access to the attributes, which can be bad because you bypass validations and can accidentally change them without triggering events.
+
+    this.gameOverModal.html(gameOverDetails);
+    this.gameOverModal.fadeIn();
+    this.$('#background-cover').show(); //This is a workaround so that if they click anywhere off the modal (even on the boardView), the modal will colse
+
   },
+
+hideModal: function(e) {
+  // There are many ways to implement the logic for hiding a modal.
+  // In this case I've handled the possibility of clicking anywhere on
+  // the RolodexView's controlled area (the whole right side of the page)
+  // and if we didn't click specifically on the modal, then we consider
+  // that as choosing to close it.
+
+  // // The actual DOM element for the modal
+  const modalElement = this.gameOverModal[0];
+  const clickedOnModal = (modalElement == e.target ||
+                          Backbone.$.contains(modalElement, e.target));
+
+
+  if(this.gameOverModal.is(':visible') && !clickedOnModal) {
+    this.gameOverModal.fadeOut();
+    this.$('#background-cover').hide();
+  }
+},
 
 
   render: function() {

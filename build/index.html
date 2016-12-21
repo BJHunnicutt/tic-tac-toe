@@ -57,8 +57,9 @@
           </section>
         </div>
       </div>
-      <section id="end-game"></section>
-
+      <div id="background-cover">
+        <section id="game-over-modal"></section>
+      </div>
     </main>
 
     <!-- Underscore Templates -->
@@ -70,9 +71,7 @@
     </script>
 
     <script type="text/template" id="tmpl-end-game">
-      <h3><%- name %></h3>
-      <h4><%- email %></h4>
-      <h4><%- phone %></h4>
+      <h3><%- message %></h3>
     </script>
 
     <!-- Entire JS project built by Webpack -->

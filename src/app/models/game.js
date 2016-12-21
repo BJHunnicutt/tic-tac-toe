@@ -6,7 +6,7 @@ import Board from 'app/collections/board';
 const Game = Backbone.Model.extend({
   // Setting defaults using an initialize constructor
   initialize: function(options = {}) { //Set default to {} if no options are given.
-    console.log(" ---- Board Initialized called ---- ");
+
     var base_board;
     var blank_board = {squares: [
       {contents: " ", location: 0},
