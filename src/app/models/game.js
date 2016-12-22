@@ -10,57 +10,59 @@ const Game = Backbone.Model.extend({
   initialize: function(options = {}) { //Set default to {} if no options are given.
 
     var base_board;
-    var blank_board = {squares: [
-      {contents: " ", location: 0},
-      {contents: " ", location: 1},
-      {contents: " ", location: 2},
-      {contents: " ", location: 3},
-      {contents: " ", location: 4},
-      {contents: " ", location: 5},
-      {contents: " ", location: 6},
-      {contents: " ", location: 7},
-      {contents: " ", location: 8}
-    ]};
+    var blank_board = {board: ["O", "X", " ", " ", " ", "O", "X", " ", " "]};
+
     // If no board is given, use a blank board
-    if (options.squares === undefined || options.squares === "" || options.squares === null) {
-      base_board = blank_board.squares;
+    // if (options.squares === undefined || options.squares === "" || options.squares === null) {
+    //   base_board = blank_board.squares;
+    // } else {
+    //   base_board = options.squares;
+    // }
+    if (options.board === undefined || options.board === [] || options.board === null) {
+      base_board = blank_board.board;
     } else {
-      base_board = options.squares;
+      base_board = options.board;
     }
 
-    // var squares = blank_board.squares.map(function(attrs) {
-    //   return new Square(attrs);
-    // });
-    this.board = new Board(base_board); // Alternatively, you can use loop above and put squares instead of base_board.squares, but that loop happens automatically in the Board collection setup
+    // Turn the board array into a Collection of Square models
+    var squares = base_board.map(function(contents) {
+      return new Square({"contents": contents});
+    });
+    this.board = new Board(squares); // Alternatively, you can use loop above and put squares instead of base_board.squares, but that loop happens automatically in the Board collection setup
+
+
+    // If no outcome is given, use a blank board
+    if (options.outcome === undefined || options.outcome === [] || options.outcome === null) {
+      this.outcome = "";
+    } else {
+      this.outcome = options.outcome;
+    }
+    // Reset and then track current matchup stats
     this.set("outcomes", [0, 0, 0]);
 
-    if (options.player1 === undefined || options.player1 === null || options.player1 === "") {
+
+    // Set player names
+    if (options.players === undefined || options.players[0] === null || options.players[0] === "") {
         this.set("player1", "Player 1");
     } else {
-      this.set("player1", options.player1);
+      this.set("player1", options.players[0]);
     }
-    if (options.player2 === undefined || options.player2 === null || options.player2 === "") {
+    if (options.players === undefined || options.players[1] === null || options.players[1] === "") {
         this.set("player2", "Player 2");
     } else {
-      this.set("player2", options.player2);
+      this.set("player2", options.players[1]);
     }
 
   },
 
   reset_board: function() {
-    var blank_board = {squares: [
-      {contents: " ", location: 0},
-      {contents: " ", location: 1},
-      {contents: " ", location: 2},
-      {contents: " ", location: 3},
-      {contents: " ", location: 4},
-      {contents: " ", location: 5},
-      {contents: " ", location: 6},
-      {contents: " ", location: 7},
-      {contents: " ", location: 8}
-    ]};
+    var blank_board = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 
-    this.board = new Board(blank_board.squares);
+    // Turn the board array into a Collection of Square models
+    var squares = blank_board.map(function(contents) {
+      return new Square({"contents": contents});
+    });
+    this.board = new Board(squares);
   },
 
   updateOutcomes: function(outcome) {
