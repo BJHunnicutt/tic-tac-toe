@@ -69,7 +69,7 @@ const ApplicationView = Backbone.View.extend({
     let outcome = this.model.board.checkWin();
     // Update the score tracker in the game model
     this.model.updateOutcomes(outcome);
-    // Add this game to the API 
+    // Add this game to the API
     this.model.formatGameForAPI(outcome);
 
     // Create a Game over message for the modal
@@ -117,14 +117,17 @@ const ApplicationView = Backbone.View.extend({
     var score_details = [
       this.scoreTemplate({
         name: this.model.get("player1"),
+        symbol: "(X)",
         wins: this.model.get("outcomes")[0]
       }),
       this.scoreTemplate({
         name: "Tie",
+        symbol: "",
         wins: this.model.get("outcomes")[1]
       }),
       this.scoreTemplate({
         name: this.model.get("player2"),
+        symbol: "(O)",
         wins: this.model.get("outcomes")[2]
       })
     ];

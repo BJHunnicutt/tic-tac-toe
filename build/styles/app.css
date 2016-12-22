@@ -9,7 +9,9 @@ body, h1, h2, h3, h4, h5 {
 
 main {
   position: relative;
-  padding: 5% 0%;
+  padding: 5vh 0vh;
+  padding-left: 60px;
+  width: 98%; /* because I have  a 2% margin on the header */
   /*height: 100%;*/
 }
 
@@ -31,7 +33,7 @@ h1 {
 
 h2, h3 {
   color: rgb(0,0,0);
-  text-shadow: 0.5px 0.5px 0px rgba(213, 201, 184, 1), -0.5px -0.5px 0px rgba(54, 45, 37,.9)
+  /*text-shadow: 0.5px 0.5px 0px rgba(213, 201, 184, 1), -0.5px -0.5px 0px rgba(54, 45, 37,.9)*/
   /*background-color: rgba(17, 10, 5, 1);
   font-weight: bold;
   color: transparent;
@@ -43,11 +45,19 @@ h2, h3 {
 
 header {
   text-align: center;
-  border-bottom: 8px solid rgba(0,0,0,0.6);
+  background-color: rgba(255, 255, 255, 0.5);
+  /*border-right: 8px solid rgba(0,0,0,0.6);*/
+  width: 60px;
+  height: 100vh;
+  position: fixed;
   /*box-shadow: -0.25px 2px 1px rgba(232, 221, 211, 0.75), inset 0.25px -2px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
 
-
+header h1 {
+  font-size: 6vh;
+  font-weight: 200;
+  padding-left: 20%;
+}
 
 /* ------------ Game Over Modal -------------- */
 #game-over-modal {
@@ -119,12 +129,28 @@ header {
 /* ------------------ Scores ------------------- */
 #scores * {
   text-align: center;
+  line-height: 1.2;
 }
+#scores {
+  padding-bottom: 2vh;
+}
+#player1-details {
+  background-color: rgba(255, 215, 0, 0.85);
+  border-radius: 100%;
+  padding-top: 1%;
+}
+#player2-details {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 100%;
+  padding-top: 2%;
+}
+
 /* ---------------- End Scores ----------------- */
 
 
 
 /* ------------------ BOARD ------------------- */
+
 #symbol-cards {
   padding: 0 10%;
 }
@@ -135,6 +161,8 @@ header {
   border-bottom: 8px solid rgba(0,0,0,0.6);
   /*box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
 }
+
+
 .symbol-card:nth-child(3), .symbol-card:nth-child(6) {
   border-bottom: 8px solid rgba(0,0,0,0.6);
   /*box-shadow: -0.25px 2px 0.5px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0.5px rgba(0, 0, 0, 0.95); /* white highlight*/*/
@@ -159,7 +187,7 @@ header {
 
 .symbol-card {
   /*background-color: rgba(0, 255, 255, 0.5);*/
-  height: 25vh;
+  height: 23vh;
   text-align: center;
   /*border: 1px solid black;*/
   list-style-type: none;
@@ -172,7 +200,7 @@ header {
 .symbol-card h4 {
   font-size: 15vh;
   line-height: 1;
-  padding-top: 4vh;
+  padding-top: 3vh;
 }
 /* ------------------ end BOARD ------------------- */
 
@@ -181,9 +209,9 @@ header {
 
 
 /* ------------------ Background image ------------------- */
-.bg-image {
+#bg-image {
   /*background-color: cyan;*/
-  /*background-image: url("/assets/colorspots.png");*/
+  /*background-image: url("/assets/yellowspots.png");*/
   /*background-image: url("/assets/aged_boards.jpg");*/
   background-size: cover;
   height: 120vh;
@@ -221,10 +249,14 @@ header {
 
 
 /* ----------- Media Queries ----------- */
-@media screen and (max-width:300px) {
+@media screen and (max-width:350px) {
 
   .symbol-card h4 {
     font-size: 25vw;
+  }
+
+  #game-over-modal h2 {
+    font-size: 1em;
   }
 
 }

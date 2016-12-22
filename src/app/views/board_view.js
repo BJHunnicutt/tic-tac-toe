@@ -23,6 +23,20 @@ const BoardView = Backbone.View.extend({
       // Set the contents of the clicked card to the current turn symbol
       card.model.set("contents", turn);
 
+      // Highlight the name of the player whose turn it is
+      let currentPlayer; let nextPlayer;
+      if (turn === "X") {
+        currentPlayer = '#player1-details';
+        nextPlayer = '#player2-details';
+      } else if (turn === "O") {
+        currentPlayer = '#player2-details';
+        nextPlayer = '#player1-details';
+      }
+      $(currentPlayer).css( "background-color", "rgba(0,0,0,0)" );
+      $(nextPlayer).css( "background-color", "rgba(255, 215, 0, 0.85)" );
+
+
+
       // If someone wins or ties, trigger the modal in ApplicationView
       if (this.collection.checkWin() !== false ) {
         this.trigger('gameOver', this);

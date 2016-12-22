@@ -18,13 +18,13 @@
   <body>
     <!-- <canvas id="canvas"> -->
     <section class="bg-overlay"></section>
-    <section class="bg-image"></section>
+    <section id="bg-image"></section>
     <!-- <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="clouds"></div> -->
 
     <header>
-      <h1>Tic-Tac-Toe</h1>
+      <h1> T <br> I <br> C <br> - <br> T <br> A <br> C <br> - <br> T <br> O <br> E <br> </h1>
     </header>
 
     <main>
@@ -82,7 +82,7 @@
     </script>
 
     <script type="text/template" id="tmpl-player-details">
-      <h3><%- name %></h3>
+      <h4><%- name %> <%- symbol %></h4>
       <h2><%- wins %></h2>
     </script>
 
@@ -94,6 +94,13 @@
     <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>
     <!-- <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
+
+
+    <!-- Loading the p5 library and the background interactive -->
+    <script src="/scripts/p5-source/p5.min.js"></script>
+    <script type='text/javascript' src='/scripts/p5-source/addons/p5.dom.min.js'></script>
+    <script src="/scripts/background.js"></script>
+
 
 
     <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
