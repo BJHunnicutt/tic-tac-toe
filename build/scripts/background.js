@@ -1,10 +1,25 @@
 
-$(document).ready(function() {
+// $(document).ready(function() {
+
 
   function setup() {
     var canvas = createCanvas(windowWidth, windowHeight);
     canvas.parent('bg-image');
     canvas.id("spots");
+
+    // this resets the canvas if someone changes the window size, or else it stays a weird box
+    // **** You lose all old spots ****
+    window.onresize = function() {
+      canvas.size(window.innerWidth, window.innerHeight);
+    };
+
+    // if (canvas.style("visibility", "visible")) {
+    //   canvas.id("spots");
+    // }
+
+    // if (canvas.style("visibility", "visible")) {
+    //   canvas.size(window.innerWidth, window.innerHeight);
+    // }
   }
 
   var x;
@@ -31,5 +46,10 @@ $(document).ready(function() {
     // fill(r, g, b);
   }
 
+  function mousePressed() {
 
-}); // closing $(document).ready
+    var toggle1 = select("#background-toggle");
+    toggle1.mousePressed(setup);
+  }
+
+// }); // closing $(document).ready

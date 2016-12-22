@@ -17,7 +17,7 @@
   </head>
   <body>
     <!-- <canvas id="canvas"> -->
-    <section class="bg-overlay"></section>
+    <section id="bg-overlay"></section>
     <section id="bg-image"></section>
     <!-- <div class="stars"></div>
     <div class="twinkling"></div>
@@ -30,6 +30,12 @@
     <main>
       <div class="row">
         <div id="game" class="large-8 medium-12 small-12 columns">
+
+          <div class="row">
+            <ul id="symbol-cards" class="row align-center">
+                <!-- insert "tmpl-symbol-card" template here -->
+            </ul>
+          </div>
           <div id="scores" class="row">
               <div id="player1-details" class="player-details large-4 medium-4 small-4 columns">
                 <!-- <h3> Jeannie </h3><h3> 2 </h3> -->
@@ -40,11 +46,6 @@
               <div id="player2-details" class="large-4 medium-4 small-4 columns">
                 <!-- <h3> Lauren </h3><h3> 3 </h3> -->
               </div>
-          </div>
-          <div class="row">
-            <ul id="symbol-cards" class="row align-center">
-                <!-- insert "tmpl-symbol-card" template here -->
-            </ul>
           </div>
           <section id="contact-details"></section>
         </div>
@@ -68,6 +69,9 @@
           </section>
         </div>
       </div>
+
+      <h2 class="button" id="background-toggle"> :( </h2>
+
       <div id="background-cover">
         <section id="game-over-modal"></section>
       </div>
@@ -93,20 +97,13 @@
 
     <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>
-    <!-- <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> -->
-
 
     <!-- Loading the p5 library and the background interactive -->
     <script src="/scripts/p5-source/p5.min.js"></script>
-    <script type='text/javascript' src='/scripts/p5-source/addons/p5.dom.min.js'></script>
+    <script type='text/javascript' src='scripts/p5-source/p5.dom.min.js'></script>
     <script src="/scripts/background.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
-
-
-    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ocanvas/2.8.6/ocanvas.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/scripts/bubbles.js"></script> -->
 
   <!-- </canvas> -->
   </body>

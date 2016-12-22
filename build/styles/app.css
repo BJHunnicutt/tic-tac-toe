@@ -11,8 +11,8 @@ main {
   position: relative;
   padding: 5vh 0vh;
   padding-left: 60px;
-  width: 98%; /* because I have  a 2% margin on the header */
-  /*height: 100%;*/
+  width: 100%;
+  height: 100%;
 }
 
 ::selection {
@@ -99,14 +99,14 @@ header h1 {
 /* ------------------ NEW GAME FORM ------------------- */
 [type="text"] {
   background-color: rgba(0,0,0,0.35);
-  /*box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);*/
+  box-shadow: inset 2px 2px 2px 3px rgba(0, 0, 0, 0.5), 2px 2px 2px rgba(232, 221, 211, 0.5);
   border: none;
   border-radius: 5px;
 }
 
-[type="text"]:focus {
+[type="text"]:focus, [type="text"]:hover {
   background-color: rgba(242, 233, 225, 0.25);
-  /*box-shadow: inset 2px 2px 2px 3px black, 2px 2px 2px rgba(232, 221, 211, 0.9);*/
+  box-shadow: inset 2px 2px 2px 3px rgba(0, 0, 0, 0.5), 2px 2px 2px rgba(232, 221, 211, 0.5);
 
 }
 
@@ -118,9 +118,17 @@ header h1 {
 }
 
 .button:hover {
-  background-color: rgba(242, 233, 225, 0.5);
+  background-color: rgba(0, 0, 0, 0.25);
   /*box-shadow: inset -2px -2px 2px 2px rgba(24, 15, 7, 0.75), inset 1px 2px 2px rgba(232, 221, 211, 1);*/
   color: black;
+}
+
+#background-toggle {
+  font-size: 1em;
+  font-weight: bold;
+  position: fixed;
+  bottom: 0;
+  right: 1vw;
 }
 /* --------------- end NEW GAME FORM --------------- */
 
@@ -137,12 +145,29 @@ header h1 {
 #player1-details {
   background-color: rgba(255, 215, 0, 0.85);
   border-radius: 100%;
-  padding-top: 1%;
+  /*border: 1px solid black;*/
+
+  padding-top: 3%;
 }
-#player2-details {
-  background-color: rgba(0, 0, 0, 0);
+
+#tie-details {
+  /*background-color: rgba(255, 255, 255, 0.5);*/
   border-radius: 100%;
-  padding-top: 2%;
+  /*border: 1px solid black;*/
+  padding-top: 3%;
+}
+
+#player2-details {
+  /*background-color: rgba(255, 255, 255, 0.5);*/
+  border-radius: 100%;
+  /*border: 1px solid rgba(0, 0, 0, 0.85);*/
+
+  padding-top: 3%;
+}
+
+#player1-details h4, #tie-details h4, #player2-details h4 {
+  /*font-size: 1.5rem;*/
+  font-weight: 300;
 }
 
 /* ---------------- End Scores ----------------- */
@@ -157,19 +182,19 @@ header h1 {
 
 /* Making tic-tac-toe board lines... might be a dumb way to do it. */
 .symbol-card:nth-child(1), .symbol-card:nth-child(2), .symbol-card:nth-child(4), .symbol-card:nth-child(5)  {
-  border-right: 8px solid rgba(0,0,0,0.6);
-  border-bottom: 8px solid rgba(0,0,0,0.6);
-  /*box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
+  border-right: 8px solid rgba(0,0,0,0.4);
+  border-bottom: 8px solid rgba(0,0,0,0.4);
+  box-shadow: 2px 2px 2px 1px rgba(232, 221, 211, 0.75), inset -2px -2px 1px 1px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
 
 
 .symbol-card:nth-child(3), .symbol-card:nth-child(6) {
-  border-bottom: 8px solid rgba(0,0,0,0.6);
-  /*box-shadow: -0.25px 2px 0.5px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0.5px rgba(0, 0, 0, 0.95); /* white highlight*/*/
+  border-bottom: 8px solid rgba(0,0,0,0.4);
+  box-shadow: -0.25px 2px 0px rgba(232, 221, 211, 0.75), inset 0.25px -2px 0px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
 .symbol-card:nth-child(7), .symbol-card:nth-child(8) {
-  border-right: 8px solid rgba(0,0,0,0.6);
-  /*box-shadow: 2px 0px 2px rgba(232, 221, 211, 0.75), inset -2px 0px 1px rgba(0, 0, 0, 0.95); /* white highlight*/*/
+  border-right: 8px solid rgba(0,0,0,0.4);
+  box-shadow: 2px 0px 0px rgba(232, 221, 211, 0.75), inset -2px 0px 0px rgba(0, 0, 0, 0.95); /* white highlight*/
 }
 /* end board lines */
 
@@ -194,13 +219,23 @@ header h1 {
 }
 
 .symbol-card:hover {
-  background-color: rgba(0,0,0,0.35);
+  background-color: rgba(0,0,0,0.1);
 }
 
 .symbol-card h4 {
   font-size: 15vh;
+  font-weight: bolder;
+  color: rgba(0,0,0,0.75);
   line-height: 1;
   padding-top: 3vh;
+
+  /*Trick to make the text shaddow inset: https://codemyviews.com/blog/inner-shadows-in-css-images-text-and-beyond*/
+  background-color: rgba(24, 15, 7, 0.85);
+  color: transparent;
+  text-shadow: 0.04em 0.04em 2px rgba(255, 255, 255, 0.35);
+  -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
 }
 /* ------------------ end BOARD ------------------- */
 
@@ -217,17 +252,19 @@ header h1 {
   height: 120vh;
   width: 100%;
   position: fixed;
-  top: -50px;
   z-index: -2;
+  display: none;
 }
 
-.bg-overlay {
-  background-color: rgba(255,230,255,0.1);
+#bg-overlay {
+  background-image: url("/assets/yellowspots.png");
+  /*background-color: rgba(255,230,255,0.1);*/
+  background-size: cover;
   height: 120vh;
   width: 100%;
   position: fixed;
-  background-size: cover;
-  z-index: -1;
+  z-index: -3;
+  display: none;
 }
 
 /*OR */

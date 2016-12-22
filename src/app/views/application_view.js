@@ -20,7 +20,8 @@ const ApplicationView = Backbone.View.extend({
     'click': 'hideModal',
     'click .btn-newgame': 'newGame',
     'click .btn-cancel': 'clearForm',
-    'click .btn-continue': 'anotherGame'
+    'click .btn-continue': 'anotherGame',
+    'click #background-toggle': 'toggleBackground'
   },
 
   newGame: function(e) {
@@ -106,6 +107,19 @@ const ApplicationView = Backbone.View.extend({
       // Also close the transparent div I covered everything else in.
       this.$('#background-cover').hide();
       this.anotherGame();
+    }
+
+  },
+
+  toggleBackground: function() {
+    if ( $("#bg-image").is(':visible')) {
+      $("#bg-image").fadeOut();
+      $("#bg-overlay").fadeOut();
+      $("#background-toggle").html(":( ");
+    } else {
+      $("#bg-image").show();
+      $("#bg-overlay").fadeIn();
+      $("#background-toggle").html(":)");
     }
 
   },

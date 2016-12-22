@@ -32,7 +32,7 @@ const BoardView = Backbone.View.extend({
         currentPlayer = '#player2-details';
         nextPlayer = '#player1-details';
       }
-      $(currentPlayer).css( "background-color", "rgba(0,0,0,0)" );
+      $(currentPlayer).css( "background-color", "rgba(255,255,255,0)" );
       $(nextPlayer).css( "background-color", "rgba(255, 215, 0, 0.85)" );
 
 
