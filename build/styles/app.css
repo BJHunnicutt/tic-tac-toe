@@ -65,6 +65,13 @@ header {
   display: none;
 }
 
+#game-over-modal h2 {
+  font-size: 1.5em;
+}
+#game-over-modal h3 {
+  padding-bottom: 1%;
+}
+
 #background-cover {
   background-color: rgba(56,0,0,0);
   position: fixed;

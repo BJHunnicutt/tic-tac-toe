@@ -5,6 +5,8 @@ import Board from 'app/collections/board';
 
 const Game = Backbone.Model.extend({
   // Setting defaults using an initialize constructor
+  url: 'https://tictactoe-api-bjh.herokuapp.com/api/v1/games',
+
   initialize: function(options = {}) { //Set default to {} if no options are given.
 
     var base_board;
@@ -75,8 +77,25 @@ const Game = Backbone.Model.extend({
       o[2] = o[2] + 1;
       this.set("outcomes", o);
     }
-  }
+  },
 
+  formatGameForAPI: function(outcome) {
+    // Initialize the JSON data needed for the API
+    let formatted = {"board": [], "players": [], "outcome": ""};
+
+    // Make an array of the board collection models
+    let board = [];
+    this.board.models.forEach(function(square) {
+      board.push(square.get("contents"));
+    });
+
+    // Set the JSON data for the current game
+    formatted.board = board;
+    formatted.players = [this.get("player1"), this.get("player2")];
+    formatted.outcome = outcome;
+
+    this.save(formatted);
+  },
 });
 
 export default Game;

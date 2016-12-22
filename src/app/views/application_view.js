@@ -67,9 +67,13 @@ const ApplicationView = Backbone.View.extend({
   displayEndGame: function(event) {
 
     let outcome = this.model.board.checkWin();
+    // Update the score tracker in the game model
     this.model.updateOutcomes(outcome);
-    let modal_message;
+    // Add this game to the API 
+    this.model.formatGameForAPI(outcome);
 
+    // Create a Game over message for the modal
+    let modal_message;
     if (outcome === "tie") {
       modal_message = "Cat's Game!";
     } else if (outcome === "X" ) {
@@ -90,7 +94,6 @@ const ApplicationView = Backbone.View.extend({
     this.gameOverModal.html(gameOverDetails);
     this.gameOverModal.fadeIn();
     this.$('#background-cover').show(); //This is a workaround so that if they click anywhere off the modal (even on the boardView), the modal will colse
-
   },
 
   hideModal: function(e) {
