@@ -8,6 +8,7 @@ import SquareView from 'app/views/square_view';
 const BoardView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, 'change', this.render);
+    this.render();
   },
 
   events: {

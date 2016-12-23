@@ -159,11 +159,24 @@ const ApplicationView = Backbone.View.extend({
       // model: this.model.get("turn"), //dont use this...
       el: this.$('#game')
     });
-
     this.listenTo(boardView, 'gameOver', this.displayEndGame);
 
+
+    // const cardList = this.$('#symbol-cards');
+    // cardList.empty();
+    //
+    // this.collection.forEach(function(square) {
+    //   const card = new SquareView({
+    //     model: square
+    //   });
+    //
+    //   this.listenTo(card, 'play', this.playSymbol);
+    //
+    //   cardList.append(card.render().$el);
+    // }, this);
+
+
     this.render_scores();
-    boardView.render();
     return this;
   }
 });

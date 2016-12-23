@@ -68,13 +68,23 @@
             </div>
           </section>
         </div>
+
+        <div id="play-history" class="large-4 medium-12 small-12 columns ">
+          <h4 class="large-12 columns"> Top Players </h4>
+          <section class="row align-center">
+
+            <div id="game-history" class="columns">
+              <div class='player-hist-card button large-3 medium-3 small-4 columns'>
+              </div>
+            </div>
+
+          </section>
+        </div>
+
       </div>
 
-      <div class=" large-4 medium-12 small-12 columns ">
-        <section class="row new-game-form">
-          <h4> New Matchup! </h4>
-          <div class="columns">
-            
+    </div>
+
 
       <h2 class="button" id="background-toggle"> :( </h2>
 
@@ -91,6 +101,10 @@
       <!-- </li> -->
     </script>
 
+    <script type="text/template" id="tmpl-player-hist-card">
+      <h4><%- name %></h4>
+    </script>
+
     <script type="text/template" id="tmpl-player-details">
       <h4><%- name %> <%- symbol %></h4>
       <h2><%- wins %></h2>
@@ -100,6 +114,8 @@
       <h3><%- message %></h3>
       <h2 class="button btn-continue"> Play Again! </h2>
     </script>
+    <!-- Underscore Templates -->
+
 
     <!-- Entire JS project built by Webpack -->
     <script src="/app.bundle.js" charset="utf-8"></script>
@@ -108,8 +124,6 @@
     <script src="/scripts/p5-source/p5.min.js"></script>
     <script type='text/javascript' src='scripts/p5-source/p5.dom.min.js'></script>
     <script src="/scripts/background.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-
 
   <!-- </canvas> -->
   </body>
