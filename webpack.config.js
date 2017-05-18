@@ -1,7 +1,8 @@
 var webpack = require('webpack');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+var merge = require('webpack-merge');
 
-module.exports = {
+var common = {
   entry: ['babel-polyfill', './src/app.js'],
   output: {
     path: './build',
@@ -13,7 +14,16 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader'
     }]
-  },
+  }
+};
+
+var production = {
+  output: {
+    publicPath: '/tic-tac-toe/'
+  }
+};
+
+var development = {
   devtool: 'source-map',
   devServer: {
     contentBase: './build',
@@ -29,3 +39,14 @@ module.exports = {
     new DashboardPlugin()
   ]
 };
+
+var buildTarget = process.env.npm_lifecycle_event;
+
+switch(buildTarget) {
+  case 'build':
+    module.exports = merge(common, production);
+    break;
+  default:
+    module.exports = merge(common, development);
+    break;
+}
