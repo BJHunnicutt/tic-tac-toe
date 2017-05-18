@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dashboard -- webpack-dev-server",
     "build": "webpack",
-    "deploy": "gh-pages -d build -o Hamled",
+    "deploy": "gh-pages -d build",
     "test": "jasmine",
     "repl": "babel-node"
   },
