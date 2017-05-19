@@ -21967,7 +21967,7 @@
 	    //Set default to {} if no options are given.
 
 	    var base_board;
-	    var blank_board = { board: ["O", "X", " ", " ", " ", "O", "X", " ", " "] };
+	    var blank_board = { board: [" ", " ", " ", " ", " ", " ", " ", " ", " "] };
 
 	    // If no board is given, use a blank board
 	    // if (options.squares === undefined || options.squares === "" || options.squares === null) {
@@ -22277,7 +22277,7 @@
 	  events: {
 	    'click': 'hideModal',
 	    'click .btn-newgame': 'newGame',
-	    'click .btn-cancel': 'clearForm',
+	    'click .btn-cancel': 'resetGameSeries',
 	    'click .btn-continue': 'anotherGame',
 	    'click #background-toggle': 'toggleBackground'
 	  },
@@ -22289,21 +22289,30 @@
 	    };
 
 	    // Create a new game model with the input player names
-	    var game = new _game2.default({ player1: gameAttrs.player1, player2: gameAttrs.player2 });
+	    var game = new _game2.default({ players: [gameAttrs.player1, gameAttrs.player2] });
 	    this.model.clear();
 	    this.model = game;
 	    // console.log("Player 1: " + this.model.get("player1"));
 
-
 	    // this.model.rolodex.add(gameAttrs);
 	    this.clearForm();
 	    this.render();
-	    console.log('Save Button Pressed');
+	    // console.log('Save Button Pressed');
+	  },
+
+	  resetGameSeries: function resetGameSeries() {
+	    // Play a new set of games with the same players
+	    var game = new _game2.default({ players: [this.model.get("player1"), this.model.get("player2")] });
+	    this.model.clear();
+	    this.model = game;
+
+	    this.clearForm();
+	    this.render();
 	  },
 
 	  clearForm: function clearForm() {
 	    this.$('.new-game-form input').val('');
-	    console.log('Cancel Button Pressed');
+	    // console.log('Cancel Button Pressed');
 	  },
 
 	  anotherGame: function anotherGame() {
@@ -22380,7 +22389,7 @@
 	  },
 
 	  render_scores: function render_scores() {
-	    console.log("Rendering Scores");
+	    // console.log("Rendering Scores");
 	    this.scoreTemplate = _underscore2.default.template(_backbone2.default.$('#tmpl-player-details').html());
 
 	    var score_details = [this.scoreTemplate({
