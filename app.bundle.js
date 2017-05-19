@@ -8216,8 +8216,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var game = new _game2.default({ board: ["O", "X", " ", " ", " ", "O", "X", " ", " "],
-	  players: ['Jeannie', 'Lauren'] });
+	var game = new _game2.default({ board: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
+	  players: ['Player 1', 'Player 2'] });
 
 	(0, _jquery2.default)(document).ready(function () {
 
