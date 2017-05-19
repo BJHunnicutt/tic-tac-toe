@@ -6,8 +6,8 @@ import Game from 'app/models/game';
 import ApplicationView from 'app/views/application_view';
 
 let game = new Game(
-  {board: ["O", "X", " ", " ", " ", "O", "X", " ", " "],
-  players: ['Jeannie', 'Lauren']}
+  {board: [" ", " ", " ", " ", " ", " ", " ", " ", " "],
+  players: ['Player 1', 'Player 2']}
 );
 
 $(document).ready(function() {
