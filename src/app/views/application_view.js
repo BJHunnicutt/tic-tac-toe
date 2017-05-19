@@ -19,7 +19,7 @@ const ApplicationView = Backbone.View.extend({
   events: {
     'click': 'hideModal',
     'click .btn-newgame': 'newGame',
-    'click .btn-cancel': 'clearForm',
+    'click .btn-cancel': 'resetGameSeries',
     'click .btn-continue': 'anotherGame',
     'click #background-toggle': 'toggleBackground'
   },
@@ -31,22 +31,31 @@ const ApplicationView = Backbone.View.extend({
     };
 
     // Create a new game model with the input player names
-    let game = new Game({player1: gameAttrs.player1, player2: gameAttrs.player2});
+    let game = new Game({players: [gameAttrs.player1, gameAttrs.player2]});
     this.model.clear();
     this.model = game;
-      // console.log("Player 1: " + this.model.get("player1"));
-
+    // console.log("Player 1: " + this.model.get("player1"));
 
     // this.model.rolodex.add(gameAttrs);
     this.clearForm();
     this.render();
-    console.log('Save Button Pressed');
+    // console.log('Save Button Pressed');
 
+  },
+
+  resetGameSeries: function() {
+    // Play a new set of games with the same players
+    let game = new Game({players: [this.model.get("player1"), this.model.get("player2")]});
+    this.model.clear();
+    this.model = game;
+
+    this.clearForm();
+    this.render();
   },
 
   clearForm: function() {
     this.$('.new-game-form input').val('');
-    console.log('Cancel Button Pressed');
+    // console.log('Cancel Button Pressed');
   },
 
   anotherGame: function() {
@@ -125,7 +134,7 @@ const ApplicationView = Backbone.View.extend({
   },
 
   render_scores: function() {
-    console.log("Rendering Scores");
+    // console.log("Rendering Scores");
     this.scoreTemplate = _.template(Backbone.$('#tmpl-player-details').html());
 
     var score_details = [

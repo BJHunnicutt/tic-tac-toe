@@ -10,7 +10,7 @@ const Game = Backbone.Model.extend({
   initialize: function(options = {}) { //Set default to {} if no options are given.
 
     var base_board;
-    var blank_board = {board: ["O", "X", " ", " ", " ", "O", "X", " ", " "]};
+    var blank_board = {board: [" ", " ", " ", " ", " ", " ", " ", " ", " "]};
 
     // If no board is given, use a blank board
     // if (options.squares === undefined || options.squares === "" || options.squares === null) {
