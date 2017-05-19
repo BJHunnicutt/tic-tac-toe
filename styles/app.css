@@ -260,7 +260,7 @@ header h1 {
 }
 
 #bg-overlay {
-  background-image: url("/assets/yellowspots.png");
+  background-image: url("../assets/yellowspots.png");
   /*background-color: rgba(255,230,255,0.1);*/
   background-size: cover;
   height: 120vh;
